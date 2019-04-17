@@ -13,7 +13,6 @@
             <p></p>
             <input type="file" name="photo" @change="fileChanged">
             <p></p>
-            <button type="button" @click="close" class="pure-button">Close</button>
             <button type="submit" class="pure-button pure-button-secondary">Upload</button>
           </form>
         </div>

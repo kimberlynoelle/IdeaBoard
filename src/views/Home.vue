@@ -5,6 +5,7 @@
       <div>
         <p>
           <a @click="toggleUpload"><i class="far fa-image"></i></a>
+          Upload new idea
         </p>
       </div>
     </div>

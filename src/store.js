@@ -7,10 +7,14 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     user: null,
+    photos: [],
   },
   mutations: {
     setUser(state, user) {
       state.user = user;
+    },
+    setPhotos(state, photos) {
+      state.photos = photos;
     },
   },
   actions: {
@@ -49,6 +53,23 @@ export default new Vuex.Store({
       } catch (error) {
         return "";
       }
-    }
+    },
+    async upload(context, data) {
+      try {
+        await axios.post('/api/photos', data);
+        return "";
+      } catch (error) {
+        return error.response.data.message;
+      }
+    },
+    async getPhotos(context) {
+      try {
+        let response = await axios.get("/api/photos/all");
+        context.commit('setPhotos', response.data);
+        return "";
+      } catch (error) {
+        return "";
+      }
+    },
   }
 });

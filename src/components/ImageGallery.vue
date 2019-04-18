@@ -3,7 +3,7 @@
   <div class="masonry">
     <div class="image" v-for="photo in photos" v-bind:key="photo._id">
       <article>
-        <img :src="photo.path" />
+        <a @click="savePhoto(photo._id)"> <img :src="photo.path"></a>
         <p>{{photo.description}}</p>
       </article>
     </div>
@@ -17,6 +17,19 @@ export default {
   props: {
     photos: Array
   },
+  methods: {
+    async savePhoto(id) {
+      console.log("inside savePhoto");
+      console.log(id);
+      try {
+        await this.$store.dispatch("saveMyPhoto", id);
+        console.log("was success");
+        return "";
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 }
 </script>
 

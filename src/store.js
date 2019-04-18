@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     user: null,
     photos: [],
+    myPhotos: [],
   },
   mutations: {
     setUser(state, user) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     setPhotos(state, photos) {
       state.photos = photos;
+    },
+    setMyPhotos(state, myPhotos) {
+      state.myPhotos = myPhotos;
     },
   },
   actions: {
@@ -66,6 +70,23 @@ export default new Vuex.Store({
       try {
         let response = await axios.get("/api/photos/all");
         context.commit('setPhotos', response.data);
+        return "";
+      } catch (error) {
+        return "";
+      }
+    },
+    async saveMyPhoto(context, id) {
+      try {
+        await axios.post('/api/myphotos/'+id);
+        return "";
+      } catch (error) {
+        return error;
+      }
+    },
+    async getMyPhotos(context) {
+      try {
+        let response = await axios.get("/api/myphotos");
+        context.commit('setMyPhotos', response.data);
         return "";
       } catch (error) {
         return "";

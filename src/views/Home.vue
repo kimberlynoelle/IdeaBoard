@@ -8,14 +8,17 @@
           Upload new idea
         </p>
       </div>
+      <p id="instructions">Click an idea to save it to your board</p>
     </div>
     <uploader :show="show" @uploadFinished="uploadFinished" />
-    <image-gallery :photos="photos" />
   </div>
   <div v-else>
     <p>If you would like to upload/save ideas, please sign up for an account or login.</p>
   </div>
+  <image-gallery :photos="photos" />
+  <a id="github" href="https://github.com/kimberlynoelle/creative-project-five">GitHub</a>
 </div>
+
 </template>
 
 <script>
@@ -80,6 +83,18 @@ export default {
   margin: 0 0 1.5em;
   display: inline-block;
   width: 100%;
+}
+
+#instructions {
+  text-align: right;
+  width: 100%;
+  margin-right: 20px;
+}
+
+#github {
+  text-align: right;
+  width: 100%;
+  margin-right: 20px;
 }
 
 .header svg {

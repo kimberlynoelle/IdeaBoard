@@ -8,7 +8,7 @@ const User = users.model;
 // Configure multer so that it will upload to '/public/images'
 const multer = require('multer')
 const upload = multer({
-  dest: '../public/images/',
+  dest: '/var/www/project5.kimberlynoellejohnson.me/images/',
   limits: {
     fileSize: 10000000
   }

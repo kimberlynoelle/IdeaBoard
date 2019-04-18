@@ -25,11 +25,9 @@ const MyPhoto = mongoose.model('MyPhoto', myPhotoSchema);
 // upload photo
 router.post("/:_id", auth.verifyToken, User.verify, async (req, res) => {
   try {
-    console.log("got here");
     let currentPhoto = await Photo.findOne({
       "_id": req.params._id
     });
-    console.log("now here");
     const myPhoto = new MyPhoto({
       user: req.user,
       path: currentPhoto.path,
@@ -43,7 +41,6 @@ router.post("/:_id", auth.verifyToken, User.verify, async (req, res) => {
       return res.sendStatus(500);
     }
   } catch (error) {
-    console.log("messed up here");
     console.log(error);
     return res.sendStatus(500);
   }

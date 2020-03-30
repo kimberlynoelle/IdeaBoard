@@ -1,4 +1,4 @@
-# creative-project-five
+# IdeaBoard
 
 ## Project setup
 ```
